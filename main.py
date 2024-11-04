@@ -1,6 +1,4 @@
-import sys
 import turtle
-import time
 from random import randint
 
 #SCREEN
@@ -50,7 +48,7 @@ def countdown(time_left):
 def skor_guncelle(x,y):
     global skor
     if not game_over:
-        skor += 10
+        skor += 1
         skor_yazisi.clear()
         skor_yazisi.write(f"SCORE: {skor}", align="left", font=("Arial", 20, "normal"))
 def randomPlace():
@@ -63,11 +61,12 @@ def randomPlace():
         win.ontimer(randomPlace,600)
     else:
         t.hideturtle()
+def gameStart():
+    countdown(20)
+    t.onclick(skor_guncelle)
+    randomPlace()
 
-countdown(5)
-t.onclick(skor_guncelle)
-randomPlace()
-
+gameStart()
 
 win.mainloop()
 
